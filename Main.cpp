@@ -45,13 +45,13 @@ const int COOKIE_CUSTOMERS_SIZE = 7;
 const int COOKIE_ITEMS_SIZE = 3;
 
 // DATA arrays for names and orders
-const int COFFEE_CUSTOMERS[COFFEE_CUSTOMERS_SIZE] = { "Alice", "Bob", "Charlie", "Diana", "Ethan", "Fiona", "George" };
+const string COFFEE_CUSTOMERS[COFFEE_CUSTOMERS_SIZE] = { "Alice", "Bob", "Charlie", "Diana", "Ethan", "Fiona", "George" };
 const int COFFEE_DRINKS[COFFEE_DRINKS_SIZE] = { "Latte", "Espresso", "Cappuccino", "Americano", "Mocha" };
 
 const int MUFFIN_CUSTOMERS[MUFFIN_CUSTOMERS_SIZE] = { "Hannah", "Ian", "Jade", "Karl", "Luna", "Mason", "Nina" };
 const int MUFFIN_ITEMS[MUFFIN_ITEMS_SIZE] = { "Blueberry Muffin", "Chocolate Muffin", "Banana Nut Muffin" };
 
-const int BRACELET_CUSTOMERS[BRACELET_CUSTOMERS_SIZE] = { "Olivia", "Paul", "Queenie", "Rita", "Sam", "Tina", "Umar" };
+const int BRACELET_CUSTOMERS[BRACELET_CUSTOMERS_SIZE] = { "Olivia", "Paul", "Queenie" };
 const int BRACELET_ITEMS[BRACELET_ITEMS_SIZE] = { "Friendship Bracelet A", "Friendship Bracelet B", "Friendship Bracelet C" };
 
 const int COOKIE_CUSTOMERS[COOKIE_CUSTOMERS_SIZE] = { "Victor", "Wendy", "Xander", "Yara", "Zane", "Abby", "Ben" };
@@ -64,7 +64,7 @@ struct Customer {
 
 //Node for linked list queue for coffee both
 struct Node {
-	Customer cst;
+	Customer data;
 	Node* next; //next ptr
 };
 
@@ -304,7 +304,16 @@ void printQueue<vector<Customer>>(const vector<Customer>& vec, bool& isCustomStr
 }
 
 template<>
-void printQueue<list<Customer>>(const list<Customer>& lst, bool& isCustomStructure);
+void printQueue<list<Customer>>(const list<Customer>& lst, bool& isCustomStructure) {
+	cout << "[";
+	auto it = lst.begin();
+	while (it != lst.end()) {
+		cout << "(" << it->name << " - " << it->order << ")";
+		++it;
+		if (it != lst.end()) cout << ", ";
+	}
+	cout << "]";
+}
 
 
 
@@ -312,11 +321,10 @@ void printQueue<list<Customer>>(const list<Customer>& lst, bool& isCustomStructu
 //MAIN
 
 int main() {
-
 	srand((unsigned)time(nullptr));
 	bool isCustomStructure = false;
 
-	//rough layout for main
+	
 
 	 // Initialize each booth queue with 3 random customers
 	// Coffee booth: LinkedListQueue
