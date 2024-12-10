@@ -147,25 +147,29 @@ void serve(QType& q) {
 void serve(CoffeeQueue& cq) {
 	cq.dequeue();
 }
-//addCust will be here
+
+
+//addCust will be here: attempts to add customer to the conntainer by pushing at the back
 template<typename QType>
-void serve(QType& q) {
-	if (!q.empty() {
-		q.erase(q.begin());
-	})
+void addCust(QType& q, Customer c) {
+	q.push_back(c); //using push back
 }
-void serve(CoffeeQueue& cq) {
-	cq.dequeue();
+void addCust(CoffeeQueue& cq, Customer c) {
+	cq.enqueue(c);
 }
+
+
 //Display Q will be here
 template<typename QType>
-void serve(QType& q) {
-	if (!q.empty() {
-		q.erase(q.begin());
-	})
+void Display(Qtype &q){
+	cout << "[";
+	for (auto& x : q) {
+		cout << "(" << x.name << " - " << x.order << ")";
+	}
+	cout << "]";
 }
-void serve(CoffeeQueue& cq) {
-	cq.dequeue();
+void displayQ(CoffeeQueue& cq) {
+	cq.displayQueue();
 }
 
 //arrays for names and orders
@@ -183,6 +187,10 @@ string cookieItems[2] = { "Chocolate chip", "Gingerbread"};
 
 int main() {
 
+	srand(time(NULL));
 
+	//Intialize each queue with 3 customers
+	CoffeeQueue coffeeQ;
+	for (int i = 0; i<)
 	return 0;
 }
