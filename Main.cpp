@@ -394,6 +394,6 @@ int main() {
 		printQueue(cookieQueue, isCustomStructure);
 		cout << endl << endl;
 
-
+	}
 	return 0;
 }
