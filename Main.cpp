@@ -172,14 +172,14 @@ void serve(CoffeeQueue& cq) {
 string coffeeNames[5] = { "Franklin, Jack, Lincoln, Teddy, Tommy" };
 string coffeeDrinks[5] = {"Latte", "Espresso", "Mocha", "Americano", "Cappuccino"};
 
-string coffeeNames[5] = { "Franklin, Jack, Lincoln, Teddy, Tommy" };
-string coffeeDrinks[5] = { "Latte", "Espresso", "Mocha", "Americano", "Cappuccino" };
+string muffinNames[4] = { "Andrew", "Bush", "Washington", "John" };
+string muffinItems[2] = { "Blueberry", "Chcolate" };
 
-string coffeeNames[5] = { "Franklin, Jack, Lincoln, Teddy, Tommy" };
-string coffeeDrinks[5] = { "Latte", "Espresso", "Mocha", "Americano", "Cappuccino" };
+string braceletNames[3] = { "Joe", "Donnie" "Billy"};
+string braceletItems[3] = { "A", "B", "C"};
 
-string coffeeNames[5] = { "Franklin, Jack, Lincoln, Teddy, Tommy" };
-string coffeeDrinks[5] = { "Latte", "Espresso", "Mocha", "Americano", "Cappuccino" };
+string cookieNames[3] = { "Franklin, Jack, Lincoln, Teddy," };
+string cookieItems[2] = { "Chocolate chip", "Gingerbread"};
 
 int main() {
 
