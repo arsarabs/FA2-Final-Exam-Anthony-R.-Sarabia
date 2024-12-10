@@ -141,8 +141,40 @@ void printQueue<vector<Customer>>(const vector<Customer>& vec, bool& isCustomStr
 template<>
 void printQueue<list<Customer>>(const list<Customer>& lst, bool& isCustomStructure);
 
-//LINKED LSIT
 
+//*****************************************************************************
+//LINKED LSIT
+LinkedListQueue::LinkedListQueue() : head(nullptr), tail(nullptr) {
+	// constructor
+}
+
+LinkedListQueue::~LinkedListQueue() {
+	while (!isEmpty()) {
+		dequeue();
+	}
+}
+
+void LinkedListQueue::enqueue(const Customer& c) {
+	Node* newNode = new Node{ c, nullptr };
+	if (isEmpty()) {
+		head = tail = newNode;
+	}
+	else {
+		tail->next = newNode;
+		tail = newNode;
+	}
+}
+
+void LinkedListQueue::dequeue() {
+	if (isEmpty()) return;
+	Node* temp = head;
+	head = head->next;
+	if (head == nullptr) tail = nullptr;
+	delete temp;
+}
+
+
+//*****************************************************************************
 //UTILITY FUNCTIONS
 int randomIndex(int size) {
 	return rand() % size;
@@ -159,16 +191,27 @@ Customer getRandomCustomer(const string customers[], int cSize, const string ite
 	return c;
 }
 
+//*****************************************************************************
 //TEMPLATE IMPLEMENRATIONS
 
-
+//*****************************************************************************
 //SPECIALIZED SERVE FUNCTIONS
 
+
+
+//*****************************************************************************
 //SPECIALIZED ADD FUNCTIONS
 
+
+
+//*****************************************************************************
 //SPECIALIZED PRINT FUNCTIONS
 
 
+
+
+
+//*****************************************************************************
 //MAIN
 
 int main() {
