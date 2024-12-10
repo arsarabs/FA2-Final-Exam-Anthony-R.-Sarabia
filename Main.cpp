@@ -276,12 +276,12 @@ void addCustomer<list<Customer>>(list<Customer>& lst, const Customer& c, bool& i
 //SPECIALIZED PRINT FUNCTIONS
 
 template<>
-void printQueue<LinkedListQueue>(const LinkedListQueue& q, bool& isCustomStructure) {
+void printQueue<LinkedListQueue>(LinkedListQueue& q, bool& isCustomStructure) {
 	q.printQueue();
 }
 
 template<>
-void printQueue<deque<Customer>>(const deque<Customer>& dq, bool& isCustomStructure) {
+void printQueue<deque<Customer>>(deque<Customer>& dq, bool& isCustomStructure) {
 	cout << "[";
 	for (size_t i = 0; i < dq.size(); ++i) {
 		cout << "(" << dq[i].name << " - " << dq[i].order << ")";
@@ -291,7 +291,7 @@ void printQueue<deque<Customer>>(const deque<Customer>& dq, bool& isCustomStruct
 }
 
 template<>
-void printQueue<vector<Customer>>(const vector<Customer>& vec, bool& isCustomStructure) {
+void printQueue<vector<Customer>>(vector<Customer>& vec, bool& isCustomStructure) {
 	cout << "[";
 	for (size_t i = 0; i < vec.size(); ++i) {
 		cout << "(" << vec[i].name << " - " << vec[i].order << ")";
@@ -301,7 +301,7 @@ void printQueue<vector<Customer>>(const vector<Customer>& vec, bool& isCustomStr
 }
 
 template<>
-void printQueue<list<Customer>>(const list<Customer>& lst, bool& isCustomStructure) {
+void printQueue<list<Customer>>(list<Customer>& lst, bool& isCustomStructure) {
 	cout << "[";
 	auto it = lst.begin();
 	while (it != lst.end()) {
