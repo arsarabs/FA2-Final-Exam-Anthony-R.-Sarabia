@@ -221,16 +221,33 @@ Customer getRandomCustomer(const string customers[], int cSize, const string ite
 //SPECIALIZED SERVE FUNCTIONS 
 
 template<>
-void serveCustomer<LinkedListQueue>(LinkedListQueue& q, bool& isCustomStructure);
+void serveCustomer<LinkedListQueue>(LinkedListQueue& q, bool& isCustomStructure) {
+	if (!q.isEmpty()) {
+		q.dequeue();
+	}
+}
 
 template<>
-void serveCustomer<deque<Customer>>(deque<Customer>& dq, bool& isCustomStructure);
+void serveCustomer<deque<Customer>>(deque<Customer>& dq, bool& isCustomStructure) {
+	if (!dq.empty()) {
+		dq.pop_front();
+	}
+}
 
 template<>
-void serveCustomer<vector<Customer>>(vector<Customer>& vec, bool& isCustomStructure);
+void serveCustomer<vector<Customer>>(vector<Customer>& vec, bool& isCustomStructure) {
+	// serving from front: remove first element
+	if (!vec.empty()) {
+		vec.erase(vec.begin());
+	}
+}
 
 template<>
-void serveCustomer<list<Customer>>(list<Customer>& lst, bool& isCustomStructure);
+void serveCustomer<list<Customer>>(list<Customer>& lst, bool& isCustomStructure) {
+	if (!lst.empty()) {
+		lst.pop_front();
+	}
+}
 
 
 
@@ -238,17 +255,24 @@ void serveCustomer<list<Customer>>(list<Customer>& lst, bool& isCustomStructure)
 //SPECIALIZED ADD FUNCTIONS
 
 template<>
-void addCustomer<LinkedListQueue>(LinkedListQueue& q, const Customer& c, bool& isCustomStructure);
+void addCustomer<LinkedListQueue>(LinkedListQueue& q, const Customer& c, bool& isCustomStructure) {
+	q.enqueue(c);
+}
 
 template<>
-void addCustomer<deque<Customer>>(deque<Customer>& dq, const Customer& c, bool& isCustomStructure);
+void addCustomer<deque<Customer>>(deque<Customer>& dq, const Customer& c, bool& isCustomStructure) {
+	dq.push_back(c);
+}
 
 template<>
-void addCustomer<vector<Customer>>(vector<Customer>& vec, const Customer& c, bool& isCustomStructure);
+void addCustomer<vector<Customer>>(vector<Customer>& vec, const Customer& c, bool& isCustomStructure) {
+	vec.push_back(c);
+}
 
 template<>
-void addCustomer<list<Customer>>(list<Customer>& lst, const Customer& c, bool& isCustomStructure);
-
+void addCustomer<list<Customer>>(list<Customer>& lst, const Customer& c, bool& isCustomStructure) {
+	lst.push_back(c);
+}
 
 
 //*****************************************************************************
@@ -275,32 +299,23 @@ int main() {
 
 	srand((unsigned)time(nullptr));
 
-	//Intialize each queue with 3 customers
-	CoffeeQueue coffeeQ;
-	for (int i = 0; i < 3; i++) {
-		coffeeQq.enqueue(getRandCustomer(coffeeNames, 5, coffeeDrinks, 5));
-	}
+	//rough layout for main
 
-	//Muffin booth uses a deque
-	deque<Customer> MuffinQ;
-	for (int i = 0; i < 3; i++) {
-		Customer cust = getRandomCustomer(muffinNames, 4, muffinItems, 2);
-		muffinQ.push_back(cust);
-	}
+	 // Initialize each booth queue with 3 random customers
+	// Coffee booth: LinkedListQueue
 
-	//Bracelet booth uses a vector
-	vector<Customer> braceletQ;
-	for (int i = 0; i < 3; i++) {
-		braceletQ.push_back(getRandomCustomer(braceletNames, 3, braceletItems, 3));
-	}
-	//Cookie booth uses a list
-	list<Customer> cookieQ;
-	for (int i = 0; i < 3; i++) {
-		cookie.push_back(getRandomCustomer(cookieNames, 3, cookieItems, 2));
-	}
+	 // Muffin booth: deque
 
-	for (int r = 1; r <= 10; r++) {
-		
-	}
+	// Bracelet booth: vector
+
+	 // Cookie booth: list
+
+
+
+
+	//*************************************
+	 // Run the simulation here!!!!!!
+
+
 	return 0;
 }
