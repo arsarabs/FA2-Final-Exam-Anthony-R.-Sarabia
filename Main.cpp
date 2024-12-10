@@ -212,5 +212,9 @@ int main() {
 	for (int i = 0; i < 3; i++) {
 		cookie.push_back(getRandomCustomer(cookieNames, 3, cookieItems, 2));
 	}
+
+	for (int r = 1; r <= 10; r++) {
+		
+	}
 	return 0;
 }
