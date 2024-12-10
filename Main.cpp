@@ -314,6 +314,7 @@ void printQueue<list<Customer>>(const list<Customer>& lst, bool& isCustomStructu
 int main() {
 
 	srand((unsigned)time(nullptr));
+	bool isCustomStructure = false;
 
 	//rough layout for main
 
@@ -326,16 +327,64 @@ int main() {
 	}
 
 	 // Muffin booth: deque
+	for (int i = 0; i < 3; i++) {
+		muffinQueue.push_back(getRandomCustomer(MUFFIN_CUSTOMERS, MUFFIN_CUSTOMERS_SIZE, MUFFIN_ITEMS, MUFFIN_ITEMS_SIZE));
+	}
 
 	// Bracelet booth: vector
+	vector<Customer> braceletQueue;
+	for (int i = 0; i < 3; i++) {
+		braceletQueue.push_back(getRandomCustomer(BRACELET_CUSTOMERS, BRACELET_CUSTOMERS_SIZE, BRACELET_ITEMS, BRACELET_ITEMS_SIZE));
+	}
 
 	 // Cookie booth: list
-
-
+	for (int i = 0; i < 3; i++) {
+		cookieQueue.push_back(getRandomCustomer(COOKIE_CUSTOMERS, COOKIE_CUSTOMERS_SIZE, COOKIE_ITEMS, COOKIE_ITEMS_SIZE));
+	}
 
 
 	//*************************************
 	 // Run the simulation here!!!!!!
+
+	for (int round = 1; round <= SIMULATION_ROUNDS; round++) {
+		cout << "----- Round " << round << " -----" << endl;
+
+		// Serve one customer per booth if available
+		serveCustomer(coffeeQueue, isCustomStructure);
+		serveCustomer(muffinQueue, isCustomStructure);
+		serveCustomer(braceletQueue, isCustomStructure);
+		serveCustomer(cookieQueue, isCustomStructure);
+
+		// Possibly add new customers with given probability
+		if (probabilityCheck(JOIN_PROBABILITY)) {
+			addCustomer(coffeeQueue, getRandomCustomer(COFFEE_CUSTOMERS, COFFEE_CUSTOMERS_SIZE, COFFEE_DRINKS, COFFEE_DRINKS_SIZE), isCustomStructure);
+		}
+		if (probabilityCheck(JOIN_PROBABILITY)) {
+			addCustomer(muffinQueue, getRandomCustomer(MUFFIN_CUSTOMERS, MUFFIN_CUSTOMERS_SIZE, MUFFIN_ITEMS, MUFFIN_ITEMS_SIZE), isCustomStructure);
+		}
+		if (probabilityCheck(JOIN_PROBABILITY)) {
+			addCustomer(braceletQueue, getRandomCustomer(BRACELET_CUSTOMERS, BRACELET_CUSTOMERS_SIZE, BRACELET_ITEMS, BRACELET_ITEMS_SIZE), isCustomStructure);
+		}
+		if (probabilityCheck(JOIN_PROBABILITY)) {
+			addCustomer(cookieQueue, getRandomCustomer(COOKIE_CUSTOMERS, COOKIE_CUSTOMERS_SIZE, COOKIE_ITEMS, COOKIE_ITEMS_SIZE), isCustomStructure);
+		}
+
+		// Print queues
+		cout << "Coffee Queue: ";
+		printQueue(coffeeQueue, isCustomStructure);
+		cout << endl;
+
+		cout << "Muffin Queue: ";
+		printQueue(muffinQueue, isCustomStructure);
+		cout << endl;
+
+		cout << "Bracelet Queue: ";
+		printQueue(braceletQueue, isCustomStructure);
+		cout << endl;
+
+		cout << "Cookie Queue: ";
+		printQueue(cookieQueue, isCustomStructure);
+		cout << endl << endl;
 
 
 	return 0;
