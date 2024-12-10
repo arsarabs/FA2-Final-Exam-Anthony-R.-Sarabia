@@ -173,6 +173,29 @@ void LinkedListQueue::dequeue() {
 	delete temp;
 }
 
+bool LinkedListQueue::isEmpty() const {
+	return (head == nullptr);
+}
+
+Customer LinkedListQueue::front() const {
+	if (!isEmpty()) {
+		return head->data;
+	}
+	// return empty customer if empty
+	return Customer{ "", "" };
+}
+
+void LinkedListQueue::printQueue() const {
+	Node* current = head;
+	cout << "[";
+	while (current != nullptr) {
+		cout << "(" << current->data.name << " - " << current->data.order << ")";
+		current = current->next;
+		if (current != nullptr) cout << ", ";
+	}
+	cout << "]";
+}
+
 
 //*****************************************************************************
 //UTILITY FUNCTIONS
@@ -192,22 +215,56 @@ Customer getRandomCustomer(const string customers[], int cSize, const string ite
 }
 
 //*****************************************************************************
-//TEMPLATE IMPLEMENRATIONS
+//TEMPLATE IMPLEMENRATIONS steps 4-6
 
 //*****************************************************************************
-//SPECIALIZED SERVE FUNCTIONS
+//SPECIALIZED SERVE FUNCTIONS 
+
+template<>
+void serveCustomer<LinkedListQueue>(LinkedListQueue& q, bool& isCustomStructure);
+
+template<>
+void serveCustomer<deque<Customer>>(deque<Customer>& dq, bool& isCustomStructure);
+
+template<>
+void serveCustomer<vector<Customer>>(vector<Customer>& vec, bool& isCustomStructure);
+
+template<>
+void serveCustomer<list<Customer>>(list<Customer>& lst, bool& isCustomStructure);
 
 
 
 //*****************************************************************************
 //SPECIALIZED ADD FUNCTIONS
 
+template<>
+void addCustomer<LinkedListQueue>(LinkedListQueue& q, const Customer& c, bool& isCustomStructure);
+
+template<>
+void addCustomer<deque<Customer>>(deque<Customer>& dq, const Customer& c, bool& isCustomStructure);
+
+template<>
+void addCustomer<vector<Customer>>(vector<Customer>& vec, const Customer& c, bool& isCustomStructure);
+
+template<>
+void addCustomer<list<Customer>>(list<Customer>& lst, const Customer& c, bool& isCustomStructure);
+
 
 
 //*****************************************************************************
 //SPECIALIZED PRINT FUNCTIONS
 
+template<>
+void printQueue<LinkedListQueue>(const LinkedListQueue& q, bool& isCustomStructure);
 
+template<>
+void printQueue<deque<Customer>>(const deque<Customer>& dq, bool& isCustomStructure);
+
+template<>
+void printQueue<vector<Customer>>(const vector<Customer>& vec, bool& isCustomStructure);
+
+template<>
+void printQueue<list<Customer>>(const list<Customer>& lst, bool& isCustomStructure);
 
 
 
