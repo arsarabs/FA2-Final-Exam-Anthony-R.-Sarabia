@@ -71,72 +71,48 @@ struct Node {
 class LinkedListQueue {
 public:
 	LinkedListQueue();
-
 	~LinkedListQueue();
-
 	void enqueue(const Customer& c);
+	void dequeue();
+	bool isEmpty() const;
+	Customer front() const;
+	void printQueue() const;
+private:
+	Node* head;
+	Node* tail;
 };
 
 
 
 //int randomIndex
-int randomIndex(int s) {
-	return rand() % s;
-}
+int randomIndex(int size);
+bool probabilityCheck(double p);
 
-//bool probCheck
-bool probCheck(double p) {
-	int r = rand() % 2;
-	if (r == 1) {
-		return true;
-	}
-	else {
-		return false;
-	}
-}
+
 
 //Customer function that returns a rnadom customer with a random name/order from given arrays
-Customer getRandCustomer(string names[], int nSize, string items[], int iSize) {
-	Customer c;
-	c.name = names[randomIndex(nSize)];
-	c.order = items[randomIndex(iSize)];
-	return c;
-}
+Customer getRandomCustomer(const string customers[], int cSize, const string items[], int iSize);
 
 //serve function template supposed to remove customer front the front of a queue
-template<typename QType>
-void serve(QType& q) {
-	if (!q.empty() {
-		q.erase(q.begin());
-	})
-}
-void serve(CoffeeQueue& cq) {
-	cq.dequeue();
-}
+template<typename QueueType>
+void serveCusotmer(QueueType& q, bool& isCustomStructure);
 
+template<typename QueueType>
+void addCustomer(QueueType& q, const Customer& c, bool& isCustomStructure);
 
-//addCust will be here: attempts to add customer to the conntainer by pushing at the back
-template<typename QType>
-void addCust(QType& q, Customer c) {
-	q.push_back(c); //using push back
-}
-void addCust(CoffeeQueue& cq, Customer c) {
-	cq.enqueue(c);
-}
+template<typename QueueType>
+void printQueue(QueueType& q, bool& isCustomStructure);
 
+//specializations for different containers
 
-//Display Q will be here
-template<typename QType>
-void Display(Qtype &q){
-	cout << "[";
-	for (auto& x : q) {
-		cout << "(" << x.name << " - " << x.order << ")";
-	}
-	cout << "]";
-}
-void displayQ(CoffeeQueue& cq) {
-	cq.displayQueue();
-}
+template<>
+void serveCustomer<LinkedListQueue>(LinkedListQueue& q, bool& isCustomStructure);
+
+void addCustomer<LinkedListQueue>(LinkedListQueue& q, const Customer& c, bool& isCustomStructure);
+
+template<>
+void printQueue<LinkedListQueue>(const LinkedListQueue& q, bool& isCustomStructure);
+
 
 int main() {
 
