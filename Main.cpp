@@ -144,8 +144,23 @@ void printQueue<list<Customer>>(const list<Customer>& lst, bool& isCustomStructu
 //LINKED LSIT
 
 //UTILITY FUNCTIONS
+int randomIndex(int size) {
+	return rand() % size;
+}
+bool probabilityCheck(double p) {
+	// random integer mod 100, if less than p*100, returns true
+	return ((rand() % 100) < static_cast<int>(p * 100));
+}
 
-//TEMPLATE IMPLEMENTATIONS
+Customer getRandomCustomer(const string customers[], int cSize, const string items[], int iSize) {
+	Customer c;
+	c.name = customers[randomIndex(cSize)];
+	c.order = items[randomIndex(iSize)];
+	return c;
+}
+
+//TEMPLATE IMPLEMENRATIONS
+
 
 //SPECIALIZED SERVE FUNCTIONS
 
@@ -158,7 +173,7 @@ void printQueue<list<Customer>>(const list<Customer>& lst, bool& isCustomStructu
 
 int main() {
 
-	srand(time(NULL));
+	srand((unsigned)time(nullptr));
 
 	//Intialize each queue with 3 customers
 	CoffeeQueue coffeeQ;
