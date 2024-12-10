@@ -32,6 +32,31 @@ your object in the non-linked-list data structures (similar to the linked list s
 
 using namespace std;
 
+const int SIMULATION_ROUNDS = 10;
+const double JOIN_PROBABILITY = 0.5;
+
+const int COFFEE_CUSTOMERS_SIZE = 7;
+const int COFFEE_DRINKS_SIZE = 5;
+const int MUFFIN_CUSTOMERS_SIZE = 7;
+const int MUFFIN_ITEMS_SIZE = 3;
+const int BRACELET_CUSTOMERS_SIZE = 3;
+const int BRACELET_ITEMS_SIZE = 3;
+const int COOKIE_CUSTOMERS_SIZE = 7;
+const int COOKIE_ITEMS_SIZE = 3;
+
+// DATA arrays for names and orders
+const int COFFEE_CUSTOMERS[COFFEE_CUSTOMERS_SIZE] = { "Alice", "Bob", "Charlie", "Diana", "Ethan", "Fiona", "George" };
+const int COFFEE_DRINKS[COFFEE_DRINKS_SIZE] = { "Latte", "Espresso", "Cappuccino", "Americano", "Mocha" };
+
+const int MUFFIN_CUSTOMERS[MUFFIN_CUSTOMERS_SIZE] = { "Hannah", "Ian", "Jade", "Karl", "Luna", "Mason", "Nina" };
+const int MUFFIN_ITEMS[MUFFIN_ITEMS_SIZE] = { "Blueberry Muffin", "Chocolate Muffin", "Banana Nut Muffin" };
+
+const int BRACELET_CUSTOMERS[BRACELET_CUSTOMERS_SIZE] = { "Olivia", "Paul", "Queenie", "Rita", "Sam", "Tina", "Umar" };
+const int BRACELET_ITEMS[BRACELET_ITEMS_SIZE] = { "Friendship Bracelet A", "Friendship Bracelet B", "Friendship Bracelet C" };
+
+const int COOKIE_CUSTOMERS[COOKIE_CUSTOMERS_SIZE] = { "Victor", "Wendy", "Xander", "Yara", "Zane", "Abby", "Ben" };
+const int COOKIE_ITEMS[COOKIE_ITEMS_SIZE] = { "Chocolate Chip Cookie", "Oatmeal Raisin Cookie", "Peanut Butter Cookie" };
+
 struct Customer {
 	string name;
 	string order;
@@ -43,75 +68,16 @@ struct Node {
 	Node* next; //next ptr
 };
 
-//Rough layout 
+class LinkedListQueue {
+public:
+	LinkedListQueue();
 
-class CoffeeQueue {
-public: 
+	~LinkedListQueue();
 
-	CoffeeQueue() {
-
-	}
-	void enqueue(Customer c) {
-		//Here, I'm creeating a new node for incoming customer
-		Node* newNode = new Node;
-		newNode->cst = c;
-		newNode->next = nullptr;
-
-		if (head == NULL) {
-			head = newNode;
-			tail = newNode;
-		}
-		else {
-			//if isnt empty, attatch new node to end and move to tail
-			tail->next = new Node;
-			tail = newNode;
-		}
-		
-	}
-
-	void dequeue() {
-		//Here, we remove the front node if any
-		if (head == nullptr) {
-			return;
-		}
-		//and if not, remove the head node and move headf ormard
-		Node* temp = head;
-		head = head->next;
-		delete temp;
-	}
-
-	bool isEmpty() {
-		return head == NULL; //if head is null, we know queue must be empty
-	}
-
-	Customer front() {
-		//return the front customers data if availiable
-		if (!isEmpty()) {
-			return head->cst;
-		}
-
-		//if empty, return empty customer
-		return Customer{ "","" };
-	}
-
-	void displayQueue() {
-		//DSIPLAY ALLL CUSOTMERS IN QUEUE
-		Node* cur = head;
-		cout << "[";
-		while (cur != NULL) {
-			cout << "(" << cur->cst.name << " - " << cur->cst.order << ")";
-			cur = cur->next;
-			if (cur != NULL) {
-				cout << ", ";
-			}
-			cout << "}";
-		}
-	}
-
-private:
-	Node* head;
-	Node* tail;
+	void enqueue(const Customer& c);
 };
+
+
 
 //int randomIndex
 int randomIndex(int s) {
@@ -171,19 +137,6 @@ void Display(Qtype &q){
 void displayQ(CoffeeQueue& cq) {
 	cq.displayQueue();
 }
-
-//arrays for names and orders
-string coffeeNames[5] = { "Franklin, Jack, Lincoln, Teddy, Tommy" };
-string coffeeDrinks[5] = {"Latte", "Espresso", "Mocha", "Americano", "Cappuccino"};
-
-string muffinNames[4] = { "Andrew", "Bush", "Washington", "John" };
-string muffinItems[2] = { "Blueberry", "Chcolate" };
-
-string braceletNames[3] = { "Joe", "Donnie" "Billy"};
-string braceletItems[3] = { "A", "B", "C"};
-
-string cookieNames[3] = { "Franklin, Jack, Lincoln, Teddy," };
-string cookieItems[2] = { "Chocolate chip", "Gingerbread"};
 
 int main() {
 
