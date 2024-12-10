@@ -29,7 +29,6 @@ struct Customer {
 	string order;
 };
 
-
 //Node for linked list queue for coffee both
 struct Node {
 	Customer cst;
@@ -38,17 +37,46 @@ struct Node {
 
 //Rough layout 
 
-// class CoffeeeQueue here
-
 class CoffeeQueue {
 public: 
+
+	CoffeeQueue() {
+
+	}
+	void enqueue(Customer c) {
+		//Here, I'm creeating a new node for incoming customer
+		Node* newNode = new Node;
+		newNode->cst = c;
+		newNode->next = nullptr;
+
+		if (head == NULL) {
+			head = newNode;
+			tail = newNode;
+		}
+		else {
+			//if isnt empty, attatch new node to end and move to tail
+			tail->next = new Node;
+			tail = newNode;
+		}
+		
+	}
+
+	void dequeue() {
+		if (head == nullptr) {
+			return;
+		}
+	}
 
 private:
 	Node* head;
 	Node* tail;
 };
 
+//int randomIndex
 
+//bool probCheck
+
+//Customer function that returns a rnadom customer with a random name/order from given arrays
 
 int main() {
 
