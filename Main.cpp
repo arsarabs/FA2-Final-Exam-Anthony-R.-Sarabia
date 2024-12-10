@@ -62,8 +62,41 @@ public:
 	}
 
 	void dequeue() {
+		//Here, we remove the front node if any
 		if (head == nullptr) {
 			return;
+		}
+		//and if not, remove the head node and move headf ormard
+		Node* temp = head;
+		head = head->next;
+		delete temp;
+	}
+
+	bool isEmpty() {
+		return head == NULL; //if head is null, we know queue must be empty
+	}
+
+	Customer front() {
+		//return the front customers data if availiable
+		if (!isEmpty()) {
+			return head->cst;
+		}
+
+		//if empty, return empty customer
+		return Customer{ "","" };
+	}
+
+	void displayQueue() {
+		//DSIPLAY ALLL CUSOTMERS IN QUEUE
+		Node* cur = head;
+		cout << "[";
+		while (cur != NULL) {
+			cout << "(" << cur->cst.name << " - " << cur->cst.order << ")";
+			cur = cur->next;
+			if (cur != NULL) {
+				cout << ", ";
+			}
+			cout << "}";
 		}
 	}
 
@@ -73,10 +106,28 @@ private:
 };
 
 //int randomIndex
+int randomIndex(int s) {
+	return rand() % s;
+}
 
 //bool probCheck
+bool probCheck(double p) {
+	int r = rand() % 2;
+	if (r == 1) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
 
 //Customer function that returns a rnadom customer with a random name/order from given arrays
+Customer getRandCustomer(string names[], int nSize, string items[], int iSize) {
+	Customer c;
+	c.name = names[randomIndex(nSize)];
+	c.order = items[randomIndex(iSize)];
+	return c;
+}
 
 int main() {
 
