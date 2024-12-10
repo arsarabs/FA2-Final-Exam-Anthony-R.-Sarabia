@@ -95,7 +95,7 @@ Customer getRandomCustomer(const string customers[], int cSize, const string ite
 
 //serve function template supposed to remove customer front the front of a queue
 template<typename QueueType>
-void serveCusotmer(QueueType& q, bool& isCustomStructure);
+void serveCustomer(QueueType& q, bool& isCustomStructure);
 
 template<typename QueueType>
 void addCustomer(QueueType& q, const Customer& c, bool& isCustomStructure);
@@ -108,11 +108,53 @@ void printQueue(QueueType& q, bool& isCustomStructure);
 template<>
 void serveCustomer<LinkedListQueue>(LinkedListQueue& q, bool& isCustomStructure);
 
+template<>
+void serveCustomer<deque<Customer>>(deque<Customer>& dq, bool& isCustomStructure);
+
+template<>
+void serveCustomer<vector<Customer>>(vector<Customer>& vec, bool& isCustomStructure);
+
+template<>
+void serveCustomer<list<Customer>>(list<Customer>& lst, bool& isCustomStructure);
+
+template<>
 void addCustomer<LinkedListQueue>(LinkedListQueue& q, const Customer& c, bool& isCustomStructure);
+
+template<>
+void addCustomer<deque<Customer>>(deque<Customer>& dq, const Customer& c, bool& isCustomStructure);
+
+template<>
+void addCustomer<vector<Customer>>(vector<Customer>& vec, const Customer& c, bool& isCustomStructure);
+
+template<>
+void addCustomer<list<Customer>>(list<Customer>& lst, const Customer& c, bool& isCustomStructure);
 
 template<>
 void printQueue<LinkedListQueue>(const LinkedListQueue& q, bool& isCustomStructure);
 
+template<>
+void printQueue<deque<Customer>>(const deque<Customer>& dq, bool& isCustomStructure);
+
+template<>
+void printQueue<vector<Customer>>(const vector<Customer>& vec, bool& isCustomStructure);
+
+template<>
+void printQueue<list<Customer>>(const list<Customer>& lst, bool& isCustomStructure);
+
+//LINKED LSIT
+
+//UTILITY FUNCTIONS
+
+//TEMPLATE IMPLEMENTATIONS
+
+//SPECIALIZED SERVE FUNCTIONS
+
+//SPECIALIZED ADD FUNCTIONS
+
+//SPECIALIZED PRINT FUNCTIONS
+
+
+//MAIN
 
 int main() {
 
