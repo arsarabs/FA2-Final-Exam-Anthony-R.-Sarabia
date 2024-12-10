@@ -20,7 +20,15 @@ Invent data to popula the data structures, and use a struct as
 your object in the non-linked-list data structures (similar to the linked list struct, just this one will have no pointer at all).
 */
 
+//necessary libraries
 #include <iostream>
+#include <string>
+#include <ctime>
+#include <vector>
+#include <deque>
+#include <list>
+#include <cstdlib>
+
 
 using namespace std;
 
@@ -128,6 +136,50 @@ Customer getRandCustomer(string names[], int nSize, string items[], int iSize) {
 	c.order = items[randomIndex(iSize)];
 	return c;
 }
+
+//serve function template supposed to remove customer front the front of a queue
+template<typename QType>
+void serve(QType& q) {
+	if (!q.empty() {
+		q.erase(q.begin());
+	})
+}
+void serve(CoffeeQueue& cq) {
+	cq.dequeue();
+}
+//addCust will be here
+template<typename QType>
+void serve(QType& q) {
+	if (!q.empty() {
+		q.erase(q.begin());
+	})
+}
+void serve(CoffeeQueue& cq) {
+	cq.dequeue();
+}
+//Display Q will be here
+template<typename QType>
+void serve(QType& q) {
+	if (!q.empty() {
+		q.erase(q.begin());
+	})
+}
+void serve(CoffeeQueue& cq) {
+	cq.dequeue();
+}
+
+//arrays for names and orders
+string coffeeNames[5] = { "Franklin, Jack, Lincoln, Teddy, Tommy" };
+string coffeeDrinks[5] = {"Latte", "Espresso", "Mocha", "Americano", "Cappuccino"};
+
+string coffeeNames[5] = { "Franklin, Jack, Lincoln, Teddy, Tommy" };
+string coffeeDrinks[5] = { "Latte", "Espresso", "Mocha", "Americano", "Cappuccino" };
+
+string coffeeNames[5] = { "Franklin, Jack, Lincoln, Teddy, Tommy" };
+string coffeeDrinks[5] = { "Latte", "Espresso", "Mocha", "Americano", "Cappuccino" };
+
+string coffeeNames[5] = { "Franklin, Jack, Lincoln, Teddy, Tommy" };
+string coffeeDrinks[5] = { "Latte", "Espresso", "Mocha", "Americano", "Cappuccino" };
 
 int main() {
 
