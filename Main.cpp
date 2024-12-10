@@ -191,6 +191,26 @@ int main() {
 
 	//Intialize each queue with 3 customers
 	CoffeeQueue coffeeQ;
-	for (int i = 0; i<)
+	for (int i = 0; i < 3; i++) {
+		coffeeQq.enqueue(getRandCustomer(coffeeNames, 5, coffeeDrinks, 5));
+	}
+
+	//Muffin booth uses a deque
+	deque<Customer> MuffinQ;
+	for (int i = 0; i < 3; i++) {
+		Customer cust = getRandomCustomer(muffinNames, 4, muffinItems, 2);
+		muffinQ.push_back(cust);
+	}
+
+	//Bracelet booth uses a vector
+	vector<Customer> braceletQ;
+	for (int i = 0; i < 3; i++) {
+		braceletQ.push_back(getRandomCustomer(braceletNames, 3, braceletItems, 3));
+	}
+	//Cookie booth uses a list
+	list<Customer> cookieQ;
+	for (int i = 0; i < 3; i++) {
+		cookie.push_back(getRandomCustomer(cookieNames, 3, cookieItems, 2));
+	}
 	return 0;
 }
