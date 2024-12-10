@@ -24,7 +24,31 @@ your object in the non-linked-list data structures (similar to the linked list s
 
 using namespace std;
 
-//Step 0a: consts and prototypes
+struct Customer {
+	string name;
+	string order;
+};
+
+
+//Node for linked list queue for coffee both
+struct Node {
+	Customer cst;
+	Node* next; //next ptr
+};
+
+//Rough layout 
+
+// class CoffeeeQueue here
+
+class CoffeeQueue {
+public: 
+
+private:
+	Node* head;
+	Node* tail;
+};
+
+
 
 int main() {
 
