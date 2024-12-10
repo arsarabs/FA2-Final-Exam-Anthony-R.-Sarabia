@@ -46,16 +46,17 @@ const int COOKIE_ITEMS_SIZE = 3;
 
 // DATA arrays for names and orders
 const string COFFEE_CUSTOMERS[COFFEE_CUSTOMERS_SIZE] = { "Alice", "Bob", "Charlie", "Diana", "Ethan", "Fiona", "George" };
-const int COFFEE_DRINKS[COFFEE_DRINKS_SIZE] = { "Latte", "Espresso", "Cappuccino", "Americano", "Mocha" };
+const string COFFEE_DRINKS[COFFEE_DRINKS_SIZE] = { "Latte", "Espresso", "Cappuccino", "Americano", "Mocha" };
 
-const int MUFFIN_CUSTOMERS[MUFFIN_CUSTOMERS_SIZE] = { "Hannah", "Ian", "Jade", "Karl", "Luna", "Mason", "Nina" };
-const int MUFFIN_ITEMS[MUFFIN_ITEMS_SIZE] = { "Blueberry Muffin", "Chocolate Muffin", "Banana Nut Muffin" };
+const string MUFFIN_CUSTOMERS[MUFFIN_CUSTOMERS_SIZE] = { "Hannah", "Ian", "Jade", "Karl", "Luna", "Mason", "Nina" };
+const string MUFFIN_ITEMS[MUFFIN_ITEMS_SIZE] = { "Blueberry Muffin", "Chocolate Muffin", "Banana Nut Muffin" };
 
-const int BRACELET_CUSTOMERS[BRACELET_CUSTOMERS_SIZE] = { "Olivia", "Paul", "Queenie" };
-const int BRACELET_ITEMS[BRACELET_ITEMS_SIZE] = { "Friendship Bracelet A", "Friendship Bracelet B", "Friendship Bracelet C" };
+const string BRACELET_CUSTOMERS[BRACELET_CUSTOMERS_SIZE] = { "Olivia", "Paul", "Queenie" };
+const string BRACELET_ITEMS[BRACELET_ITEMS_SIZE] = { "Friendship Bracelet A", "Friendship Bracelet B", "Friendship Bracelet C" };
 
-const int COOKIE_CUSTOMERS[COOKIE_CUSTOMERS_SIZE] = { "Victor", "Wendy", "Xander", "Yara", "Zane", "Abby", "Ben" };
-const int COOKIE_ITEMS[COOKIE_ITEMS_SIZE] = { "Chocolate Chip Cookie", "Oatmeal Raisin Cookie", "Peanut Butter Cookie" };
+const string COOKIE_CUSTOMERS[COOKIE_CUSTOMERS_SIZE] = { "Victor", "Wendy", "Xander", "Yara", "Zane", "Abby", "Ben" };
+const string COOKIE_ITEMS[COOKIE_ITEMS_SIZE] = { "Chocolate Chip Cookie", "Oatmeal Raisin Cookie", "Peanut Butter Cookie" };
+
 
 struct Customer {
 	string name;
@@ -82,13 +83,9 @@ private:
 	Node* tail;
 };
 
-
-
 //int randomIndex
 int randomIndex(int size);
 bool probabilityCheck(double p);
-
-
 
 //Customer function that returns a rnadom customer with a random name/order from given arrays
 Customer getRandomCustomer(const string customers[], int cSize, const string items[], int iSize);
@@ -330,6 +327,9 @@ int main() {
 	// Coffee booth: LinkedListQueue
 
 	LinkedListQueue coffeeQueue;
+	deque<Customer> muffinQueue;
+	list<Customer> cookieQueue;
+
 	for (int i = 0; i < 3; i++) {
 		coffeeQueue.enqueue(getRandomCustomer(COFFEE_CUSTOMERS, COFFEE_CUSTOMERS_SIZE, COFFEE_DRINKS, COFFEE_DRINKS_SIZE));
 	}
